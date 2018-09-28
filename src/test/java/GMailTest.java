@@ -1,4 +1,4 @@
-import com.epam.lab.Driver.DriverCreator;
+import com.epam.lab.driver.DriverCreator;
 import com.epam.lab.business_objects.MailBusinessObject;
 import com.epam.lab.constants.Constants;
 import com.epam.lab.parser.MyParser;

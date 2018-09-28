@@ -1,4 +1,4 @@
-package com.epam.lab.Driver;
+package com.epam.lab.driver;
 
 import com.epam.lab.constants.Constants;
 import com.epam.lab.parser.MyParser;
@@ -33,5 +33,4 @@ public class DriverCreator {
     public static void remove() {
         drivers.remove(Thread.currentThread().getId()).quit();
     }
-
 }

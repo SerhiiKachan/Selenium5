@@ -1,6 +1,6 @@
 package com.epam.lab.specific_elements.interfaces;
 
-import com.epam.lab.Driver.DriverCreator;
+import com.epam.lab.driver.DriverCreator;
 import com.epam.lab.constants.Constants;
 import com.epam.lab.parser.MyParser;
 import org.openqa.selenium.*;
