@@ -30,8 +30,7 @@ public class DriverCreator {
         return drivers.computeIfAbsent(Thread.currentThread().getId(), l -> DriverCreator.newInstance());
     }
 
-    public static void destroy() {
+    public static void remove() {
         drivers.remove(Thread.currentThread().getId()).quit();
     }
-
 }

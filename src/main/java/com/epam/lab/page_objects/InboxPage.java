@@ -34,28 +34,24 @@ public class InboxPage {
     }
 
     private void selectMessage(CheckBox message, int index) {
-        try {
-            if (!message.isChecked())
-                message.click();
-            message = messages.get(index);
-        } catch (StaleElementReferenceException e) {
-            if (!message.isChecked())
-                message.click();
-            message = messages.get(index);
-        }
+        message.waitForToBeAttachedToTheDOM();
+        message.waitForPresenceOfElement();
+        if (!message.isChecked())
+            message.click();
+        message = messages.get(index);
         identifiers.add(message.getAttribute(ID));
         LOG.info("Message selected");
     }
 
     public void deleteSelectedMessages() {
         LOG.info("Deleting messages...");
-        deleteButton.click();
+        deleteButton.waitUntilElementToBeClickableAndClick();
         LOG.info(COMPLETED);
     }
 
     public void undo() {
         LOG.info("Undo deleting...");
-        undoButton.click();
+        undoButton.waitUntilElementToBeClickableAndClick();
         LOG.info(COMPLETED);
     }
 
@@ -83,16 +79,17 @@ public class InboxPage {
     public boolean isUndoCompleted() {
         LOG.info("Checking undo operation...");
         try {
-            Thread.sleep(1000);
             int i = 0;
             while (i < identifiers.size()) {
+                messages.get(i).waitForToBeAttachedToTheDOM();
+                messages.get(i).waitForPresenceOfElement();
                 if (!messages.get(i).getAttribute(ID).equals(identifiers.get(i)))
                     throw new NoSuchElementException("Can't find element with id=" + identifiers.get(i) + ". Element has been deleted.");
                 i++;
             }
             LOG.info(COMPLETED);
             return true;
-        } catch (NoSuchElementException | InterruptedException e) {
+        } catch (NoSuchElementException e) {
             LOG.error(e.getMessage());
             return false;
         }

@@ -44,6 +44,6 @@ public class GMailTest {
 
     @AfterMethod
     public void exit() {
-        DriverCreator.destroy();
+        DriverCreator.remove();
     }
 }
