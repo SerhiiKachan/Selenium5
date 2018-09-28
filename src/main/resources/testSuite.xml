@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="TestNG Testing Suite" parallel="instances">
-    <test name="GMailTesting" thread-count="3">
+<suite name="TestNG Suite" parallel="instances" thread-count="3">
+    <test name="testUndoWithMessagesDeletion">
         <classes>
             <class name="GMailTest"/>
         </classes>

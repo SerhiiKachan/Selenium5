@@ -33,4 +33,5 @@ public class DriverCreator {
     public static void remove() {
         drivers.remove(Thread.currentThread().getId()).quit();
     }
+
 }

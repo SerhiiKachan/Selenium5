@@ -28,8 +28,8 @@ public class InboxPage {
     @FindBy(id = "link_undo")
     private Button undoButton;
 
-    public InboxPage(WebDriver webDriver) {
-        PageFactory.initElements(new CustomFieldDecorator(webDriver), this);
+    public InboxPage(WebDriver driver) {
+        PageFactory.initElements(new CustomFieldDecorator(driver), this);
         identifiers = new ArrayList<>();
     }
 

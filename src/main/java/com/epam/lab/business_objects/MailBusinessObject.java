@@ -5,6 +5,7 @@ import com.epam.lab.page_objects.AuthorizationPage;
 import com.epam.lab.page_objects.InboxPage;
 import com.epam.lab.parser.XML_models.User;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 
 public class MailBusinessObject {
 
