@@ -27,6 +27,10 @@ public interface IElement {
             webElement.click();
         }
 
+        public void fillInputWith(CharSequence... charSequences){
+            webElement.sendKeys(charSequences);
+        }
+
         public String getAttribute(String name) {
             return webElement.getAttribute(name);
         }

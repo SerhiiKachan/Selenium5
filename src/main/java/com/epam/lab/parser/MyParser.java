@@ -20,7 +20,7 @@ import static com.epam.lab.constants.Constants.PASSWORD;
 
 public class MyParser {
 
-    public Object[] parseXML(String path) {
+    public List<User> parseXML(String path) {
         List<User> users = new ArrayList<>();
         try {
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(path);
@@ -35,7 +35,7 @@ public class MyParser {
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
-        return users.toArray();
+        return users;
     }
 
     public Properties parsePropertiesFile(String path) {

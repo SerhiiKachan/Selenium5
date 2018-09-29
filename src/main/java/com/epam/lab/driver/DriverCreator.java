@@ -21,7 +21,6 @@ public class DriverCreator {
         Properties driverProperties = new MyParser().parsePropertiesFile(Constants.DRIVER_PROPERTIES_PATH);
         System.setProperty("webdriver.chrome.driver", driverProperties.getProperty("browser_driver"));
         WebDriver driver = new ChromeDriver();
-        driver.manage().window().fullscreen();
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(driverProperties.getProperty("implicit_wait")), TimeUnit.SECONDS);
         return driver;
     }
