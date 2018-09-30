@@ -27,16 +27,8 @@ public interface IElement {
             webElement.click();
         }
 
-        public String getAttribute(String name) {
-            return webElement.getAttribute(name);
-        }
-
         public void waitUntilElementToBeClickableAndClick() {
             wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
-        }
-
-        public void waitForToBeAttachedToTheDOM(){
-            wait.until(ExpectedConditions.not(ExpectedConditions.stalenessOf(webElement)));
         }
     }
 }

@@ -13,12 +13,4 @@ public class CheckBox extends IElement.Element {
     public boolean isChecked() {
         return webElement.isSelected();
     }
-
-    public void sendKeys(CharSequence... charSequences) {
-        throw new UnsupportedOperationException("Information can't be typed into checkbox.");
-    }
-
-    public void clear() {
-        throw new UnsupportedOperationException("Checkbox has no information to be cleared.");
-    }
 }

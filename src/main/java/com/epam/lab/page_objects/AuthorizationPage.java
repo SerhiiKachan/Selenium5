@@ -29,15 +29,15 @@ public class AuthorizationPage {
     }
 
     public void enterEmailAndClickNext(String mail) {
-        LOG.info("Entering email...");
+        LOG.info("===> Entering email...");
         email.fillInputWith(mail);
-        LOG.info("Submitting email...");
+        LOG.info("===> Submitting email...");
         emailNextButton.click();
     }
 
     public void enterPasswordAndClickNext(String pass) {
-        LOG.info("Entering password...");
+        LOG.info("===> Entering password...");
         password.fillInputWith(pass + Keys.ENTER);
-        LOG.info("Password submitted");
+        LOG.info("===> Password submitted");
     }
 }

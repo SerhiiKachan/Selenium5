@@ -9,7 +9,7 @@ public class TextInput extends IElement.Element {
         super(webElement);
     }
 
-    public void fillInputWith(CharSequence... charSequences){
+    public void fillInputWith(CharSequence... charSequences) {
         webElement.sendKeys(charSequences);
     }
 }

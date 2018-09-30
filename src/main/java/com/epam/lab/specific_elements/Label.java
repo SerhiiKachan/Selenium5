@@ -10,11 +10,7 @@ public class Label extends IElement.Element {
         super(webElement);
     }
 
-    public void sendKeys(CharSequence... charSequences) {
-        throw new UnsupportedOperationException("Information can't be typed into label.");
-    }
-
-    public void clear() {
-        throw new UnsupportedOperationException("Text can't be erased.");
+    public String getText() {
+        return webElement.getText();
     }
 }

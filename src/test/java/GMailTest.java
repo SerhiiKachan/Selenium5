@@ -40,7 +40,7 @@ public class GMailTest {
         mailBusinessObject.logIn(user);
         mailBusinessObject.selectMessages(3);
         mailBusinessObject.deleteSelectedMessages();
-        Assert.assertTrue(mailBusinessObject.undoDeleting());
+        Assert.assertTrue(mailBusinessObject.isUndoCompleted());
         LOG.info("TEST SUCCESSFULLY PASSED");
     }
 

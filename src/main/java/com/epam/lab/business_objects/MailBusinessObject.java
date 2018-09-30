@@ -18,7 +18,7 @@ public class MailBusinessObject {
     }
 
     public void logIn(User user) {
-        LOG.info("Authorization...");
+        LOG.info("=> Authorization...");
         authorizationPage.enterEmailAndClickNext(user.getEmail());
         authorizationPage.enterPasswordAndClickNext(user.getPassword());
     }
@@ -31,7 +31,7 @@ public class MailBusinessObject {
         inboxPage.deleteSelectedMessages();
     }
 
-    public boolean undoDeleting() {
+    public boolean isUndoCompleted() {
         inboxPage.undo();
         return inboxPage.isUndoCompleted();
     }

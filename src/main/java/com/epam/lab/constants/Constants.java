@@ -8,7 +8,6 @@ public class Constants {
     public static final String START_URL = "https://mail.google.com";
 
     public static final String USERNAME = "USERNAME ===> ";
-    public static final String ID = "id";
 
     public static final String USER = "user";
     public static final String EMAIL = "email";
