@@ -10,11 +10,9 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
-import java.util.Properties;
 
 import static com.epam.lab.constants.Constants.LOG4J_PROPERTIES_PATH;
 import static com.epam.lab.constants.Constants.START_URL;
-import static com.epam.lab.constants.Constants.USERNAME;
 
 public class GMailTest {
 
@@ -33,7 +31,6 @@ public class GMailTest {
     @Test(dataProvider = "getUsers", threadPoolSize = 3)
     public void testUndoWithMessagesDeletion(User user) {
         LOG.info("TEST STARTED");
-        LOG.info(USERNAME + user.getEmail());
         WebDriver driver = DriverManager.getDriver();
         driver.get(START_URL);
         MailBusinessObject mailBusinessObject = new MailBusinessObject(driver);

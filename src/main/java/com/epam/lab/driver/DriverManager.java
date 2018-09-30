@@ -2,7 +2,6 @@ package com.epam.lab.driver;
 
 import com.epam.lab.constants.Constants;
 import com.epam.lab.parser.MyParser;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

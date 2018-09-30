@@ -63,7 +63,6 @@ public class InboxPage {
     }
 
     public void selectSeveralMessages(int quantity) {
-//        waitForPageToBeLoaded();
         LOG.info("===> Selecting messages to delete...");
         if (checkBoxes.size() > quantity) {
             int i = 0;
@@ -83,11 +82,10 @@ public class InboxPage {
                 if (!actualTitles.get(i).getText().equals(oldTitles.get(i)))
                     throw new NoSuchElementException("Can't find element with text" + oldTitles.get(i) + " It has been deleted.");
                 i++;
-            }catch (UnhandledAlertException e){
+            } catch (UnhandledAlertException e) {
                 driver.switchTo().alert().accept();
                 i++;
-            }
-            catch (NoSuchElementException e){
+            } catch (NoSuchElementException e) {
                 LOG.error(e.getMessage());
                 return false;
             }
