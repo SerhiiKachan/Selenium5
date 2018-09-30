@@ -11,15 +11,15 @@ public class Button extends IElement.Element {
     }
 
     public void sendKeys(CharSequence... charSequences) {
-        throw new UnsupportedCommandException("Information can't be typed into button.");
+        throw new UnsupportedOperationException("Information can't be typed into button.");
     }
 
     public void clear() {
-        throw new UnsupportedCommandException("Text can't be erased.");
+        throw new UnsupportedOperationException("Text can't be erased.");
     }
 
     public boolean isSelected() {
-        throw new UnsupportedCommandException("Button can't be checked or unchecked.");
+        throw new UnsupportedOperationException("Button can't be checked or unchecked.");
     }
 
 }

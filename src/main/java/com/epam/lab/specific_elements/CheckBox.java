@@ -15,10 +15,10 @@ public class CheckBox extends IElement.Element {
     }
 
     public void sendKeys(CharSequence... charSequences) {
-        throw new UnsupportedCommandException("Information can't be typed into checkbox.");
+        throw new UnsupportedOperationException("Information can't be typed into checkbox.");
     }
 
     public void clear() {
-        throw new UnsupportedCommandException("Checkbox has no information to be cleared.");
+        throw new UnsupportedOperationException("Checkbox has no information to be cleared.");
     }
 }

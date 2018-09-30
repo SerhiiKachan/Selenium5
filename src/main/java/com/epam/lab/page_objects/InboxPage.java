@@ -1,21 +1,29 @@
 package com.epam.lab.page_objects;
 
+import com.epam.lab.constants.Constants;
+import com.epam.lab.driver.DriverManager;
 import com.epam.lab.page_objects.decorator.CustomFieldDecorator;
+import com.epam.lab.parser.MyParser;
 import com.epam.lab.specific_elements.Button;
 import com.epam.lab.specific_elements.CheckBox;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import static com.epam.lab.constants.Constants.ID;
 import static com.epam.lab.constants.Constants.COMPLETED;
 
 public class InboxPage {
 
+    private WebDriver driver;
     private List<String> identifiers;
     private final Logger LOG = Logger.getLogger(InboxPage.class);
 
@@ -28,51 +36,46 @@ public class InboxPage {
     @FindBy(id = "link_undo")
     private Button undoButton;
 
+
     public InboxPage(WebDriver driver) {
         PageFactory.initElements(new CustomFieldDecorator(driver), this);
         identifiers = new ArrayList<>();
+        this.driver = driver;
     }
 
-    private void selectMessage(CheckBox message, int index) {
+    private void selectMessage(CheckBox message) {
         message.waitForToBeAttachedToTheDOM();
-        message.waitForPresenceOfElement();
-        if (!message.isChecked())
-            message.click();
-        message = messages.get(index);
-        identifiers.add(message.getAttribute(ID));
+        try{
+            if (!message.isChecked())
+                message.click();
+            identifiers.add(message.getAttribute(ID));
+        }catch (StaleElementReferenceException e) {
+            if (!message.isChecked())
+                message.click();
+            identifiers.add(message.getAttribute(ID));
+        }
         LOG.info("Message selected");
     }
 
     public void deleteSelectedMessages() {
         LOG.info("Deleting messages...");
         deleteButton.waitUntilElementToBeClickableAndClick();
-        LOG.info(COMPLETED);
     }
 
     public void undo() {
         LOG.info("Undo deleting...");
         undoButton.waitUntilElementToBeClickableAndClick();
-        LOG.info(COMPLETED);
     }
 
     public void selectSeveralMessages(int quantity) {
         LOG.info("Selecting messages to delete...");
-        int i = 0;
+        LOG.info(messages.size());
         if (messages.size() > quantity) {
+            int i = 0;
             while (i < quantity) {
-                selectMessage(messages.get(i), i);
+                selectMessage(messages.get(i));
                 i++;
             }
-        } else {
-            selectAllMessages();
-        }
-    }
-
-    private void selectAllMessages() {
-        int i = 0;
-        while (i < messages.size()) {
-            selectMessage(messages.get(i), i);
-            i++;
         }
     }
 
@@ -82,7 +85,6 @@ public class InboxPage {
             int i = 0;
             while (i < identifiers.size()) {
                 messages.get(i).waitForToBeAttachedToTheDOM();
-                messages.get(i).waitForPresenceOfElement();
                 if (!messages.get(i).getAttribute(ID).equals(identifiers.get(i)))
                     throw new NoSuchElementException("Can't find element with id=" + identifiers.get(i) + ". Element has been deleted.");
                 i++;

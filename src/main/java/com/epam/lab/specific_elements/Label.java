@@ -11,10 +11,10 @@ public class Label extends IElement.Element {
     }
 
     public void sendKeys(CharSequence... charSequences) {
-        throw new UnsupportedCommandException("Information can't be typed into label.");
+        throw new UnsupportedOperationException("Information can't be typed into label.");
     }
 
     public void clear() {
-        throw new UnsupportedCommandException("Text can't be erased.");
+        throw new UnsupportedOperationException("Text can't be erased.");
     }
 }

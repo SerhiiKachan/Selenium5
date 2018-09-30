@@ -1,6 +1,5 @@
 package com.epam.lab.business_objects;
 
-import com.epam.lab.driver.DriverCreator;
 import com.epam.lab.page_objects.AuthorizationPage;
 import com.epam.lab.page_objects.InboxPage;
 import com.epam.lab.parser.XML_models.User;
@@ -13,9 +12,9 @@ public class MailBusinessObject {
     private AuthorizationPage authorizationPage;
     private InboxPage inboxPage;
 
-    public MailBusinessObject() {
-        authorizationPage = new AuthorizationPage(DriverCreator.getDriver());
-        inboxPage = new InboxPage(DriverCreator.getDriver());
+    public MailBusinessObject(WebDriver driver) {
+        authorizationPage = new AuthorizationPage(driver);
+        inboxPage = new InboxPage(driver);
     }
 
     public void logIn(User user) {
