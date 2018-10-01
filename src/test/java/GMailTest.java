@@ -8,8 +8,6 @@ import org.apache.log4j.PropertyConfigurator;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import java.util.List;
-
 import static com.epam.lab.constants.Constants.LOG4J_PROPERTIES_PATH;
 
 public class GMailTest {
@@ -22,8 +20,7 @@ public class GMailTest {
 
     @DataProvider(parallel = true)
     public static Object[] getUsers() {
-        List<User> users = new MyParser().parseXML(Constants.USER_XML_PATH);
-        return users.toArray();
+        return new MyParser().parseXML(Constants.USER_XML_PATH);
     }
 
     @Test(dataProvider = "getUsers", threadPoolSize = 3)

@@ -52,19 +52,15 @@ public class InboxPage {
     }
 
     public void deleteSelectedMessages() {
-
-        LOG.info("===> Deleting messages...");
         deleteButton.waitUntilElementToBeClickableAndClick();
     }
 
     public void undo() {
-        LOG.info("===> Undo deleting...");
         undoButton.waitUntilElementToBeClickableAndClick();
     }
 
     public void selectSeveralMessages(int quantity) {
-        LOG.info("===> Selecting messages to delete...");
-        if (checkBoxes.size() > quantity) {
+        if (!checkBoxes.isEmpty() & checkBoxes.size() > quantity) {
             int i = 0;
             while (i < quantity) {
                 selectMessage(checkBoxes.get(i), actualTitles.get(i).getText());
@@ -74,7 +70,7 @@ public class InboxPage {
     }
 
     public boolean isUndoCompleted() {
-        LOG.info("===> Checking undo operation...");
+        LOG.info("===> Checking undo operation result...");
         driver.navigate().refresh();
         int i = 0;
         while (i < oldTitles.size()) {

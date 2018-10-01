@@ -29,14 +29,17 @@ public class MailBusinessObject {
     }
 
     public void selectMessages(int quantity) {
+        LOG.info("=> Selecting messages to delete...");
         inboxPage.selectSeveralMessages(quantity);
     }
 
     public void deleteSelectedMessages() {
+        LOG.info("=> Deleting messages...");
         inboxPage.deleteSelectedMessages();
     }
 
     public void undoDeleting(){
+        LOG.info("=> Undo deleting...");
         inboxPage.undo();
     }
 
