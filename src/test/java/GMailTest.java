@@ -5,14 +5,12 @@ import com.epam.lab.parser.MyParser;
 import com.epam.lab.parser.XML_models.User;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
 
 import static com.epam.lab.constants.Constants.LOG4J_PROPERTIES_PATH;
-import static com.epam.lab.constants.Constants.START_URL;
 
 public class GMailTest {
 
@@ -31,12 +29,11 @@ public class GMailTest {
     @Test(dataProvider = "getUsers", threadPoolSize = 3)
     public void testUndoWithMessagesDeletion(User user) {
         LOG.info("TEST STARTED");
-        WebDriver driver = DriverManager.getDriver();
-        driver.get(START_URL);
-        MailBusinessObject mailBusinessObject = new MailBusinessObject(driver);
+        MailBusinessObject mailBusinessObject = new MailBusinessObject();
         mailBusinessObject.logIn(user);
         mailBusinessObject.selectMessages(3);
         mailBusinessObject.deleteSelectedMessages();
+        mailBusinessObject.undoDeleting();
         Assert.assertTrue(mailBusinessObject.isUndoCompleted());
         LOG.info("TEST SUCCESSFULLY PASSED");
     }

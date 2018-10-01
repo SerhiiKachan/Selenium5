@@ -1,10 +1,13 @@
 package com.epam.lab.business_objects;
 
+import com.epam.lab.driver.DriverManager;
 import com.epam.lab.page_objects.AuthorizationPage;
 import com.epam.lab.page_objects.InboxPage;
 import com.epam.lab.parser.XML_models.User;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+
+import static com.epam.lab.constants.Constants.START_URL;
 
 public class MailBusinessObject {
 
@@ -12,9 +15,11 @@ public class MailBusinessObject {
     private AuthorizationPage authorizationPage;
     private InboxPage inboxPage;
 
-    public MailBusinessObject(WebDriver driver) {
+    public MailBusinessObject() {
+        WebDriver driver = DriverManager.getDriver();
         authorizationPage = new AuthorizationPage(driver);
         inboxPage = new InboxPage(driver);
+        driver.get(START_URL);
     }
 
     public void logIn(User user) {
@@ -31,8 +36,11 @@ public class MailBusinessObject {
         inboxPage.deleteSelectedMessages();
     }
 
-    public boolean isUndoCompleted() {
+    public void undoDeleting(){
         inboxPage.undo();
+    }
+
+    public boolean isUndoCompleted() {
         return inboxPage.isUndoCompleted();
     }
 }
