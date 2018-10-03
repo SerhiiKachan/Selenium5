@@ -1,5 +1,5 @@
-import com.epam.lab.driver.DriverManager;
 import com.epam.lab.business_objects.MailBusinessObject;
+import com.epam.lab.driver.DriverManager;
 import com.epam.lab.constants.Constants;
 import com.epam.lab.parser.MyParser;
 import com.epam.lab.parser.XML_models.User;
@@ -18,12 +18,7 @@ public class GMailTest {
         PropertyConfigurator.configure(LOG4J_PROPERTIES_PATH);
     }
 
-    @DataProvider(parallel = true)
-    public static Object[] getUsers() {
-        return new MyParser().parseXML(Constants.USER_XML_PATH);
-    }
-
-    @Test(dataProvider = "getUsers", threadPoolSize = 3)
+    @Test(dataProviderClass = DataProviderForTest.class, dataProvider = "dp")
     public void testUndoWithMessagesDeletion(User user) {
         LOG.info("TEST STARTED");
         MailBusinessObject mailBusinessObject = new MailBusinessObject();
@@ -35,8 +30,8 @@ public class GMailTest {
         LOG.info("TEST SUCCESSFULLY PASSED");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void exit() {
-        DriverManager.getDriver().quit();
+        DriverManager.exit();
     }
 }

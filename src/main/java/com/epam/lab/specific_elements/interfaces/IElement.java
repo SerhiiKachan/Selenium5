@@ -26,7 +26,7 @@ public interface IElement {
             webElement.click();
         }
 
-        public void waitUntilElementToBeClickableAndClick() {
+        public void waitAndClick() {
             wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
         }
     }

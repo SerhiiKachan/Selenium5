@@ -19,6 +19,16 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/main/resources/test_ng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -31,7 +41,8 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>RELEASE</version>
+            <version>6.11</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>

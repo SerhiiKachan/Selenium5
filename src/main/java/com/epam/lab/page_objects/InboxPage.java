@@ -41,22 +41,20 @@ public class InboxPage {
 
     private void selectMessage(CheckBox checkBox, String title) {
         try {
-            if (!checkBox.isChecked())
-                checkBox.click();
+            checkBox.setChecked();
         } catch (StaleElementReferenceException e) {
-            if (!checkBox.isChecked())
-                checkBox.click();
+            checkBox.setChecked();
         }
         oldTitles.add(title);
         LOG.info("=> Message selected");
     }
 
     public void deleteSelectedMessages() {
-        deleteButton.waitUntilElementToBeClickableAndClick();
+        deleteButton.waitAndClick();
     }
 
     public void undo() {
-        undoButton.waitUntilElementToBeClickableAndClick();
+        undoButton.waitAndClick();
     }
 
     public void selectSeveralMessages(int quantity) {

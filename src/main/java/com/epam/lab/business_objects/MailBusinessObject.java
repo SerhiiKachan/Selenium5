@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 import static com.epam.lab.constants.Constants.START_URL;
 
-public class MailBusinessObject {
+public class MailBusinessObject{
 
     private Logger LOG = Logger.getLogger(MailBusinessObject.class);
     private AuthorizationPage authorizationPage;

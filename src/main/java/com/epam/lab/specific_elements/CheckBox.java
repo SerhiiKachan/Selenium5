@@ -9,7 +9,12 @@ public class CheckBox extends IElement.Element {
         super(webElement);
     }
 
-    public boolean isChecked() {
+    private boolean isChecked() {
         return webElement.isSelected();
+    }
+
+    public void setChecked() {
+        if (!this.isChecked())
+            this.click();
     }
 }
